@@ -1,11 +1,16 @@
+
 Template['home'].helpers({
   myFormData: function() {
     return { directoryName: 'images', prefix: this._id, _id: this._id }
   },
   filesToUpload: function() {
     return Uploader.info.get();
+  },
+  spdxdoc: function(){
+    return Session.get("spdxdoc");
   }
 });
+
 
 Template['uploadedInfo'].helpers({
   src: function() {
@@ -15,17 +20,17 @@ Template['uploadedInfo'].helpers({
   }
 });
 
+
 Template['uploadedInfo'].events({
   'click .deleteUpload':function() {
     if (confirm('Are you sure?')) {
       Meteor.call('deleteFile', this._id);
     }
   },
-  'click .SPDXGenerate':function() {
+  'click .SPDXGenerate':function(event, template) {
     console.log('SPDX Generation in progress');
     Meteor.call('generateSPDX', this._id, function(err, response){
-        console.log(response);
-        console.log('this response');
+        Session.set("spdxdoc", response);
     });
   }
 })
