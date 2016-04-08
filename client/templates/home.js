@@ -1,11 +1,5 @@
 
 Template['home'].helpers({
-  myFormData: function() {
-    return { directoryName: 'images', prefix: this._id, _id: this._id }
-  },
-  filesToUpload: function() {
-    return Uploader.info.get();
-  },
   spdxdoc: function(){
     return Session.get("spdxdoc");
   }
@@ -14,23 +8,27 @@ Template['home'].helpers({
 
 Template['uploadedInfo'].helpers({
   src: function() {
-    if (this.type.indexOf('image') >= 0) {
-      return 'upload/' + this.path;
-    } else return 'file_icon.png';
+    return 'file_icon.png';
   }
 });
 
 
 Template['uploadedInfo'].events({
   'click .deleteUpload':function() {
-    if (confirm('Are you sure?')) {
-      Meteor.call('deleteFile', this._id);
-    }
+    sAlert.warning("File deleted", {effect: 'bouncyflip', position: 'top-right', timeout: 3000, onRouteClose: true, stack: true, offset: '100px'})
+    Meteor.call('deleteFile', this._id);
   },
   'click .SPDXGenerate':function(event, template) {
-    console.log('SPDX Generation in progress');
+    sAlert.info("SPDX Generation in progress", {effect: 'bouncyflip', position: 'top-right', timeout: 3000, onRouteClose: true, stack: true, offset: '100px'});
     Meteor.call('generateSPDX', this._id, function(err, response){
-        Session.set("spdxdoc", response);
+        if(err){
+          sAlert.error("Error in scanning " + this._id, {effect: 'bouncyflip', position: 'top-right', timeout: 3000, onRouteClose: true, stack: true, offset: '100px'});
+
+        }
+        if(response){
+          sAlert.success("Scanning completed, navigate down for resutls", {effect: 'bouncyflip', position: 'top-right', timeout: 3000, onRouteClose: true, stack: true, offset: '100px'});
+          Session.set("spdxdoc", response);
+        }
     });
   }
 })

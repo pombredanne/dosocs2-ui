@@ -7,9 +7,8 @@ Meteor.methods({
 
     var upload = Uploads.findOne(_id);
     if (upload == null) {
-      throw new Meteor.Error(404, 'Upload not found'); // maybe some other code
+      throw new Meteor.Error(404, 'Upload not found'); // To-Do create 404 route
     }
-
     UploadServer.delete(upload.path);
     Uploads.remove(_id);
   },
@@ -20,7 +19,7 @@ Meteor.methods({
     varspdxData = '';
     var upload = Uploads.findOne(_id);
     if (upload == null) {
-      throw new Meteor.Error(404, 'Upload not found'); // maybe some other code
+      throw new Meteor.Error(404, 'Upload not found'); // To-Do create 404 route
     }
     // DoSOCSv2 Scan starts here
     pkg_to_scan = process.env.PWD + '/uploads/' + upload.name;
