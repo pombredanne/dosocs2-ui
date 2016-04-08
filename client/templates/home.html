@@ -15,6 +15,8 @@
             <ul class="list-group">
                 <li class="list-group-item">
                     <label>Upload packages</label>
+                </li>
+                <li>
                     {{> upload_bootstrap }}
                 </li>
             </ul>
@@ -29,7 +31,11 @@
             </p>
         </div>
         <div class="container spdxDocContainer">
-            {{spdxdoc}}
+            <div class="modal-body" id="spdxDocText">
+              <pre>
+                {{spdxdoc}}
+              </pre>
+            </div>
         </div>
     </div>
 </template>
