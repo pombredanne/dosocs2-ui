@@ -19,6 +19,7 @@ Template['uploadedInfo'].events({
     Meteor.call('deleteFile', this._id);
   },
   'click .SPDXGenerate':function(event, template) {
+    event.preventDefault();
     sAlert.info("SPDX Generation in progress", {effect: 'bouncyflip', position: 'top-right', timeout: 3000, onRouteClose: true, stack: true, offset: '100px'});
     Meteor.call('generateSPDX', this._id, function(err, response){
         if(err){
