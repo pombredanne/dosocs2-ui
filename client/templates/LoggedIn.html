@@ -1,0 +1,25 @@
+<template name="LoggedIn">
+  <div class="panel panel-default">
+    <!-- List group -->
+
+    <ul class="list-group">
+        <li class="list-group-item">
+            <label>Upload packages</label>
+        </li>
+        <li>
+            {{> upload_bootstrap }}
+        </li>
+    </ul>
+  </div>
+  <div class="panel">
+    <h3>Uploaded Following Files</h3>
+    <p>
+        {{> uploadedInfo uploads }}
+    </p>
+  </div>
+  <div class="container spdxDocContainer">
+    <div class="modal-body" id="spdxDocText">
+      <pre>{{spdxdoc}}</pre>
+    </div>
+  </div>
+</template>

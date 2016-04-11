@@ -1,7 +1,30 @@
 <template name="header">
-  <head>
-    <h1>DoSOCSv2-UI</h1>
-  </head>
+  <nav id="main-navigation" class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li><head><h1>DoSOCSv2-UI</h1></head></li>
+        <!-- user specific notifications for DOSOCS2-UI go here!-->
+        <!--<li><a href="{{pathFor 'notifications'}}"><i class="fa fa-fw fa-bell"></i> Notifications </a></li>
+        <li><a href="{{pathFor 'profile'}}"><i class="fa fa-fw fa-user"></i> Me</a></li> -->
+      </ul>
+
+      <ul class="nav navbar-nav navbar-right">
+        <li> {{> atNavButton}}</li>
+      </ul>
+      </div>
+    </div>
+  </nav>
 
   <div class="panel panel-default">
     <!-- Default panel contents -->
