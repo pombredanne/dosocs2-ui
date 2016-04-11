@@ -4,6 +4,11 @@
 
         {{#if currentUser}}
           {{> LoggedIn}}
+          <div class="container spdxDocContainer">
+            <div class="modal-body" id="spdxDocText">
+              <pre>{{spdxdoc}}</pre>
+            </div>
+          </div>
         {{else}}
           {{> Login}}
         {{/if}}
