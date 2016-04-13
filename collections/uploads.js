@@ -11,6 +11,16 @@ Uploads.before.insert(function(userId, doc){
   doc.uploadedAt = new Date();
 });
 
+Uploads.helpers({
+  currentuser: function(){
+    return Meteor.users.findOne({_id: this.userId});
+  },
+  GenuploadedTime: function(){
+    return moment(this.uploadedAt).fromNow();
+  }
+});
+
+
 
 // Insert update actions
 // Forced ownership is used for deletion of a package
