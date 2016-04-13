@@ -1,7 +1,7 @@
 Meteor.startup(function () {
   // init items collection
   if (Items.find().count() == 0) {
-    Items.insert({name: 'My Item', uploads: []});
+    Items.insert({name: 'Dummy Item - To prevent error on client side console', uploads: []});
   }
 
   UploadServer.init({

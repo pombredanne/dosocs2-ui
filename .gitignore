@@ -1,0 +1,10 @@
+*.jar
+*.tar
+*.gz
+*.zip
+*.7z
+*.py
+*.pyc
+*.elf*
+*.cpp
+*.swp

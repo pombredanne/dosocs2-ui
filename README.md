@@ -1,6 +1,19 @@
 # DOSOCS2-UI
 Web interface for DoSOCSv2
 
+## First and Foremost: You're smart. So please read this carefully
+
+  * If DOSOCS2-UI is in development mode i.e. `meteor run` or `meteor` is being used and the server is just localhost:3000, then all is well.
+
+  * When moving to production, it is imperative that these two below are performed
+
+    * `meteor remove msavin:mongol`
+    * `meteor --production` or `meteor --run production` be used to set the production flags. See more in `nginx configuration` below
+    * `msavin:mongol` + `development mode meteor for production` === disasterwaiting to happen. Client can own the database with ease.
+    * `Smart developers` would explore the collections directory and set collection-hooks `matb33:collection-hooks`.
+    * NoSQL databases have    [`nosqlinjection`](https://www.owasp.org/index.php/Testing_for_NoSQL_injection)
+    * To ensure client does not have direct access to database and rather just minimongo (per user client side storage), please make collection changes in the collection directory only.
+
 ## Configuring development environment
 
   1. Install and configure `dosocs2`
@@ -71,16 +84,16 @@ Web interface for DoSOCSv2
     * Change the server_name to the domain name require
 
   4. Reload nginx with `nginx -s reload` or `/usr/sbin/nginx -s reload`. This will reload configuration just created as <socs.conf>.
-   
-    * More information on controlling nginx is at http://nginx.org/en/docs/control.html 
+
+    * More information on controlling nginx is at http://nginx.org/en/docs/control.html
 
   5. Meteor server will run on localhost but proxy_pass will redirect users to Meteor application. However, do not run meteor in development mode.
-     
+
     * run `meteor --production` from the directory where DOSOCS2-UI was cloned.
 
   6. Navigate to the field provided in the server_name in the configuration <dosocs2app.organization.com> to start using DOSOCS2-UI
 
-   
+
   7. While this is a minimum setup, Meteor applications can be bundled and run as a nodejs application.
      * Detailed instruction are at https://www.digitalocean.com/community/tutorials/how-to-deploy-a-meteor-js-application-on-ubuntu-14-04-with-nginx
 
@@ -88,11 +101,11 @@ Web interface for DoSOCSv2
 
 ## User-Accounts
 
-   * Customizing user-accounts 
+   * Customizing user-accounts
 
-  
+
 ## CONTRIBUTING
-  
+
   * Contributing guidelines will be updated in CONTRIBUTING.MD file.
     * The contribution rules for DOSOCS-UI are currently being rewritten. You are welcome to create issues, but we can't accept pull requests from the community at this time.
 
@@ -114,5 +127,3 @@ Please report security weakness as issues on GitHub. Before reporting, please co
 [DoSOCSv2 organization](https://github.com/DoSOCSv2)
 
 (This work has been funded through the National Science Foundation VOSS-IOS Grant: 1122642.
-
-
