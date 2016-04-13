@@ -1,6 +1,9 @@
 Template['uploadedInfo'].helpers({
   src: function() {
     return 'file_icon.png';
+  },
+  GenuploadedTime: function(){
+    return moment(this.uploadedAt).fromNow();
   }
 });
 

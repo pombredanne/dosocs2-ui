@@ -2,15 +2,16 @@
     <div class="documentList">
         <ul class="list-inline">
             {{#each this}}
+              {{#if _id}}
                 <li class="documentItem">
                     <a href="/upload/{{path}}"><img src="{{src}}"></a><br/>
                     <label>{{ name }}</label> <br/>
                     {{ size }} <br>
-                    {{#if _id}}
-                        <a class="btn btn-danger deleteUpload">Delete</a>
-                        <a class="btn btn-success SPDXGenerate">SPDX</a>
-                    {{/if}}
+                    <a class="btn btn-danger deleteUpload">Delete</a>
+                    <a class="btn btn-success SPDXGenerate">SPDX</a><br/>
+                    <p>Uploaded {{GenuploadedTime}}</p>
                 </li>
+              {{/if}}
             {{/each}}
         </ul>
     </div>
