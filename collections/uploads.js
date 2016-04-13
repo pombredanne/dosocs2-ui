@@ -13,7 +13,8 @@ Uploads.before.insert(function(userId, doc){
 
 Uploads.helpers({
   currentuser: function(){
-    return Meteor.users.findOne({_id: this.userId});
+    if (Meteor.users.findOne({_id: this.userId}))
+        return true;
   },
   GenuploadedTime: function(){
     return moment(this.uploadedAt).fromNow();

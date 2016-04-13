@@ -2,7 +2,7 @@
     <div class="documentList">
         <ul class="list-inline">
             {{#each this}}
-              {{#if _id}}
+              {{#if currentuser}}
                 <li class="documentItem">
                     <a href="/upload/{{path}}"><img src="{{src}}"></a><br/>
                     <label>{{ name }}</label> <br/>
