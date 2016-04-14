@@ -5,8 +5,8 @@ Meteor.startup(function () {
   }
 
   UploadServer.init({
-    tmpDir: process.env.PWD + '/uploads/tmp',
-    uploadDir: process.env.PWD + '/uploads/',
+    tmpDir: process.env.PWD + '/.uploads/tmp',
+    uploadDir: process.env.PWD + '/.uploads/',
     checkCreateDirectories: true,
     getDirectory: function(fileInfo, formData) {
       fileInfo.name = Random.id([3.414]) + '_' + fileInfo.name;

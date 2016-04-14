@@ -22,7 +22,7 @@ Meteor.methods({
       throw new Meteor.Error(404, 'Upload not found'); // To-Do create 404 route
     }
     // DoSOCSv2 Scan starts here
-    pkg_to_scan = process.env.PWD + '/uploads/' + upload.name;
+    pkg_to_scan = process.env.PWD + '/.uploads/' + upload.name;
     //Spawn a child process for DoSCOSv2 Scan
     var command = "dosocs2 oneshot "+ pkg_to_scan;
     exec(command, function(error, stdout, stderr){
