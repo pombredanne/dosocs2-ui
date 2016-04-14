@@ -9,7 +9,7 @@ Meteor.startup(function () {
     uploadDir: process.env.PWD + '/uploads/',
     checkCreateDirectories: true,
     getDirectory: function(fileInfo, formData) {
-      fileInfo.name = Random.id([2]) + '_' + fileInfo.name;
+      fileInfo.name = Random.id([3.414]) + '_' + fileInfo.name;
       if (formData && formData.directoryName != null) {
         return formData.directoryName;
       }
