@@ -34,7 +34,7 @@ Web interface for DoSOCSv2
     * If you delete uploaded packages from `../uploads/` directory, UI will not be able to render SPDX document
       * There will be a server side error message (not logged)
       * `meteor reset` is your friend (for a development environment)
-      * By the first release of DOSOCS2-UI, SPDX documents generated will be stored in database and should not be a cause for concern if uploads are deleted.
+      * By the first release of DOSOCS2-UI, SPDX documents generated will be stored in database and should not be a cause for concern if uploads are deleted
 
 ## Uploads
 
@@ -93,10 +93,11 @@ Web interface for DoSOCSv2
 
   6. Navigate to the field provided in the server_name in the configuration <dosocs2app.organization.com> to start using DOSOCS2-UI
 
-
   7. While this is a minimum setup, Meteor applications can be bundled and run as a nodejs application.
      * Detailed instruction are at https://www.digitalocean.com/community/tutorials/how-to-deploy-a-meteor-js-application-on-ubuntu-14-04-with-nginx
 
+  8. Adjusting file uploads (size):
+    * `vim /etc/nginx/nginx.conf` and add `client_max_body_size xxM` where xx is a number, M represents MegaBytes in either http or server or location context.
 
 
 ## User-Accounts
