@@ -23,11 +23,9 @@ standard-minifier-js
 twbs:bootstrap
 juliancwirko:s-alert
 juliancwirko:s-alert-bouncyflip
-nimble:restivus
 useraccounts:bootstrap
 useraccounts:iron-routing
 momentjs:moment
 dburles:collection-helpers
 matb33:collection-hooks
 accounts-password
-msavin:mongol
