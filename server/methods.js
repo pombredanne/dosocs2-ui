@@ -24,10 +24,9 @@ Meteor.methods({
     // DoSOCSv2 Scan starts here
     pkg_to_scan = process.env.PWD + '/.uploads/' + upload.name;
     //Spawn a child process for DoSCOSv2 Scan
-    console.log(pkg_to_scan);
     dosocs2_wrapper_loc = process.env.PWD + '/server/call_dosocs2.py'
     var command = "python " + dosocs2_wrapper_loc + ' ' + pkg_to_scan;
-    exec(command,{maxBuffer: 1024 * 5000}, function(error, stdout, stderr){
+    exec(command,{maxBuffer: 1024 * 10000}, function(error, stdout, stderr){
         if(error){
             console.log(error);
         }

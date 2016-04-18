@@ -4,6 +4,9 @@ import sys
 import subprocess
 
 
+# MongoURL 
+## If switching to a mongo server instead of meteor mongo, ensure that the configuration is save
+
 # This is a tiny wrapper around dosoc2
 
 def call_dosocs2(pkg_path):

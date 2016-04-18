@@ -1,9 +1,28 @@
 Meteor.startup(function () {
-  // init items collection
-  if (Items.find().count() == 0) {
-    Items.insert({name: 'Dummy Item - To prevent error on client side console', uploads: []});
-  }
+  
+  Api = new Restivus({
+      version: 'v1',
+      useDefaultAuth: true,
+      prettyJson: true
+    });
 
+  Api.addCollection(Meteor.users);
+
+  Api.addRoute('uploads/:id', {authRequired: true}, {
+      post:{
+        action: function () {
+          var upload = Uploads.findOne(this.urlParams.id);
+          if (article) {
+            return {status: "success", data: upload};
+          }
+          return {
+            statusCode: 400,
+            body: {status: "fail", message: "Unable to find Package"}
+          };
+        }
+      }
+    });
+  
   UploadServer.init({
     tmpDir: process.env.PWD + '/.uploads/tmp',
     uploadDir: process.env.PWD + '/.uploads/',

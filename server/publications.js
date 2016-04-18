@@ -4,6 +4,4 @@ Meteor.publish('items', function() {
 
 Meteor.publish('uploads', function() {
   return Uploads.find();
-})
-
-// this should be probably somewher
+});
