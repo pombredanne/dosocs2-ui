@@ -32,7 +32,13 @@ Meteor.methods({
         }
         future.return(stdout.toString());
     });
-    return future.wait();
+    var documentText =  future.wait();
+    var pdfdoc = new PDFDocument({size: 'A4', margin: 50});
+    pdfdoc.fontSize(12);
+    pdfdoc.text(documentText, 10, 50, {align: 'center', width: 800});
+    pdfdoc.writeSync(pkg_to_scan+'.pdf');
+    return documentText;
+    
   }
 
 })
