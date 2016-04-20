@@ -27,7 +27,8 @@ Web interface for DoSOCSv2
     * `git clone https://github.com/UShan89/DOSOCS2-UI.git`
     * `cd DOSOCS2-UI`
     * type `meteor` to start the meteor development server
-    * `mongodb` is available through meteor
+    * `mongodb` is available through meteor. However, Using a mongodb production server is a better choice.
+       `export MONGO_URL=mongodb://localhost:27017/meteor` or instead of `meteor` use a database name of choice. At this point, meteor is the name of database created by mongodb.
 
   4. Resetting `mongodb`
     * Type `meteor reset` from the project directory to reset mongo database
@@ -103,6 +104,11 @@ Web interface for DoSOCSv2
 ## User-Accounts
 
    * Customizing user-accounts
+     `useraccounts:core` and `meteor add useraccounts:bootstrap` being used alongside `accounts-password`. If useraccounts and passwords customization is required, these packages should be removed or changed. `vanilla packages` exist for Facebook, Twitter, Google Accounts and GitHub Login. Check `https://atmoshpherejs.com` for packages.
+
+   * Rolling your own authentication.
+      To save documentation size and to limit duplication, here is the source for performing your own authentication with Meteor.
+      `https://themeteorchef.com/recipes/roll-your-own-authentication/`
 
 
 ## CONTRIBUTING
