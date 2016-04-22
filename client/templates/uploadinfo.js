@@ -20,7 +20,8 @@ Template['uploadedInfo'].events({
         }
         if(response){
           sAlert.success("Scanning completed, navigate down for resutls", {effect: 'bouncyflip', position: 'top-right', timeout: 3000, onRouteClose: true, stack: true, offset: '100px'});
-          Session.set("spdxdoc", response);
+	  console.log(response.spdxdoc);
+	  Session.set('spdxdoc', response.spdxdoc);
         }
     });
   }

@@ -26,19 +26,16 @@ Meteor.methods({
     //Spawn a child process for DoSCOSv2 Scan
     dosocs2_wrapper_loc = process.env.PWD + '/server/call_dosocs2.py'
     var command = "python " + dosocs2_wrapper_loc + ' ' + pkg_to_scan;
-    exec(command,{maxBuffer: 1024 * 10000}, function(error, stdout, stderr){
+    exec(command,{maxBuffer: 4096 * 10000}, function(error, stdout, stderr){
         if(error){
             console.log(error);
         }
         future.return(stdout.toString());
     });
     var documentText =  future.wait();
-    var pdfdoc = new PDFDocument({size: 'A4', margin: 50});
-    pdfdoc.fontSize(12);
-    pdfdoc.text(documentText, 10, 50, {align: 'center', width: 800});
-    pdfdoc.writeSync(pkg_to_scan+'.pdf');
-    return documentText;
-    
+    // Repeated SPDX Generation will update SPDX Document in the meteor mongo database
+    Uploads.update({name: upload.name}, {$set: {'spdxdoc': documentText}}, {upsert:true});   
+    return Uploads.findOne({name:upload.name});
   }
 
 })
