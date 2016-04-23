@@ -16,7 +16,6 @@ Meteor.methods({
     this.unblock();
     var future = new Future();
     check(_id, String);
-    varspdxData = '';
     var upload = Uploads.findOne(_id);
     if (upload == null) {
       throw new Meteor.Error(404, 'Upload not found'); // To-Do create 404 route
