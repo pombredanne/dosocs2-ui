@@ -8,7 +8,7 @@ Web interface for DoSOCSv2
 
   * If DOSOCS2-UI is in development mode i.e. `meteor run` or `meteor` is being used and the server is just localhost:3000, then all is well.
 
-  * When moving to production, it is imperative that these two below are performed
+  * When moving to production, it is imperative that the operations below are performed
 
     * `meteor remove msavin:mongol`
     * `meteor --production` or `meteor --run production` be used to set the production flags. See more in `nginx configuration` below
@@ -24,7 +24,7 @@ Web interface for DoSOCSv2
     * Perform database initialization with `dosocs2 dbinit` from console
 
   2. Install meteor `curl https://install.meteor.com/ | sh` on OS X or Linux
-    * The UI will run on `windows` but `dosocs2` does not run natively on `windows` unless Linux container is used.
+    * DoSOCS-UI will run on `windows` but `dosocs2` does not run natively on `windows` unless a Linux container is used.
 
   3. Clone this project
     * `git clone https://github.com/UShan89/DOSOCS2-UI.git`
@@ -68,23 +68,25 @@ Web interface for DoSOCSv2
   3. Configure nginx
 
     * `sudo rm /etc/nginx/sites-enabled/default` removes default configuration if this is a new instance or if default is not being used.
-    * `sudo vi /etc/nginx/sites-enabled/socs.conf` to create a new configuration file and paste the below. Rename to any file.
-    	* server {
-                   listen                *:80;
-
-                   server_name           <dosocs2app.organization.com>;
-
-                   access_log            /var/log/nginx/app.dev.access.log;
-                   error_log             /var/log/nginx/app.dev.error.log;
-
-                   location / {
-                                proxy_pass http://127.0.0.1:3000;
-                                proxy_http_version 1.1;
-                                proxy_set_header Upgrade $http_upgrade;
-                                proxy_set_header Connection 'upgrade';
-                                proxy_set_header X-Forwarded-For $remote_addr;
-                              }
-                }
+    * `sudo vi /etc/nginx/sites-enabled/socs.conf` to create a new configuration file and paste the below. Rename to any file.  
+		  
+		```Configruation-file
+		        server {  
+		                   listen                *:80;
+		                   server_name           <dosocs2app.organization.com>;
+		
+		                   access_log            /var/log/nginx/app.dev.access.log;
+		                   error_log             /var/log/nginx/app.dev.error.log;
+		
+		                   location / {
+		                                proxy_pass http://127.0.0.1:3000;
+		                                proxy_http_version 1.1;
+		                                proxy_set_header Upgrade $http_upgrade;
+		                                proxy_set_header Connection 'upgrade';
+		                                proxy_set_header X-Forwarded-For $remote_addr;
+		                              }
+		                }
+		```
     * Change the server_name to the domain name require
 
   4. Reload nginx with `nginx -s reload` or `/usr/sbin/nginx -s reload`. This will reload configuration just created as <socs.conf>.
