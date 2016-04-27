@@ -1,6 +1,9 @@
 # DOSOCS2-UI
 Web interface for DoSOCSv2
 
+[![Build Status](https://travis-ci.org/UShan89/dosocs2-ui.svg?branch=master)](https://travis-ci.org/UShan89/dosocs2-ui)
+
+
 ## First and Foremost: You're smart. So please read this carefully
 
   * If DOSOCS2-UI is in development mode i.e. `meteor run` or `meteor` is being used and the server is just localhost:3000, then all is well.
