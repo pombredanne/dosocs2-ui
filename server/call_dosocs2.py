@@ -18,7 +18,5 @@ def call_dosocs2(pkg_path):
         sys.stderr.write("Error in scanning package {}".format(pkg_path))
 
 
-call_dosocs2(sys.argv[1])
-
 if __name__ == "__main__":
     call_dosocs2(sys.argv[1])
