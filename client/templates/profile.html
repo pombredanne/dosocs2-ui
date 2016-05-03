@@ -1,0 +1,15 @@
+<template name="profile">
+    <div class="container">
+        {{#if currentUser}}
+	  {{> header}}
+	  {{> restoken}}
+        {{else}}
+	  <div class="row"> 
+	    <div class="col-md-6 col-md-offset-3">
+            {{> atForm }}
+	   </div>
+	  </div>
+        {{/if}}
+    </div>
+	{{> Tfooter}}
+</template>
