@@ -35,6 +35,14 @@ Meteor.methods({
     // Repeated SPDX Generation will update SPDX Document in the meteor mongo database
     Uploads.update({name: upload.name}, {$set: {'spdxdoc': documentText}}, {upsert:true});   
     return Uploads.findOne({name:upload.name});
-  }
+  },
+  'gentoken': function(userId) {
+     if (this.userId){
+        var randomText = Fake.sentence([2])
+        Meteor.users.update({'_id':this.userId}, {$set: {'token': randomText}});
+     	return Meteor.users.findOne({'_id':this.userId}, {'_id':0, 'token':1});
+     }
+   }
+
 
 })
