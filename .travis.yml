@@ -1,8 +1,20 @@
+## Original build instructions - Reference and License
+## https://github.com/arunoda/travis-ci-meteor-packages/blob/master/LICENSE
+## travis-ci build
+## Copyright (c) 2013 Arunoda Susiripala <arunoda.susiripala@gmail.com>
+
 sudo: required
+
 language: node_js
 node_js:
-  - "0.8"
   - "0.10"
   
 before_install:
   - "curl -L http://git.io/ejPSng | /bin/sh"
+
+services:
+  - mongodb
+
+script:
+  - meteor add dispatch:mocha-phantomjs
+  - meteor test --once --driver-package dispatch:mocha-phantomjs
